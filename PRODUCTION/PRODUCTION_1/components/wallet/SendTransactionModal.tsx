@@ -4,6 +4,7 @@ import { Input } from '../ui/Input';
 import { Button } from '../ui/Button';
 import { Alert } from '../ui/Alert';
 import { sendEthereumTransaction } from '@/lib/wallet/ethereum';
+import { sendBitcoinTransaction } from '@/lib/wallet/bitcoin';
 import toast from 'react-hot-toast';
 
 interface SendTransactionModalProps {
@@ -59,12 +60,12 @@ export function SendTransactionModal({
       
       // Send transaction
       let txHash: string;
-      
+
       if (chain === 'ethereum') {
         txHash = await sendEthereumTransaction(privateKey, recipient, amount);
       } else {
-        // Bitcoin transaction sending would go here
-        throw new Error('Bitcoin transactions not yet implemented');
+        // Bitcoin transaction sending
+        txHash = await sendBitcoinTransaction(privateKey, recipient, amount);
       }
       
       toast.success(`Transaction sent! Hash: ${txHash.slice(0, 10)}...`);
