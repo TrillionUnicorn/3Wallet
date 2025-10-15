@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Copy, RefreshCw } from 'lucide-react';
+import { Copy, RefreshCw, Send } from 'lucide-react';
 import { Card } from '../ui/Card';
 import { Button } from '../ui/Button';
+import { SendTransactionModal } from './SendTransactionModal';
 import { getEthereumBalance } from '@/lib/wallet/ethereum';
 import { getBitcoinBalance } from '@/lib/wallet/bitcoin';
 import { useWalletStore } from '@/lib/store/wallet-store';
@@ -11,10 +12,12 @@ interface WalletCardProps {
   address: string;
   chain: 'ethereum' | 'bitcoin';
   balance: string;
+  privateKey?: string;
 }
 
-export function WalletCard({ address, chain, balance }: WalletCardProps) {
+export function WalletCard({ address, chain, balance, privateKey }: WalletCardProps) {
   const [isRefreshing, setIsRefreshing] = useState(false);
+  const [showSendModal, setShowSendModal] = useState(false);
   const updateBalance = useWalletStore((state) => state.updateBalance);
   
   const chainInfo = {
@@ -81,7 +84,7 @@ export function WalletCard({ address, chain, balance }: WalletCardProps) {
         </p>
       </div>
       
-      <div className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg">
+      <div className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg mb-4">
         <p className="text-sm text-gray-600 flex-1 truncate font-mono">
           {address}
         </p>
@@ -92,6 +95,27 @@ export function WalletCard({ address, chain, balance }: WalletCardProps) {
           <Copy size={16} />
         </button>
       </div>
+
+      {privateKey && (
+        <Button
+          onClick={() => setShowSendModal(true)}
+          className="w-full"
+          size="sm"
+        >
+          <Send size={16} className="mr-2" />
+          Send {info.symbol}
+        </Button>
+      )}
+
+      {privateKey && (
+        <SendTransactionModal
+          isOpen={showSendModal}
+          onClose={() => setShowSendModal(false)}
+          chain={chain}
+          privateKey={privateKey}
+          onSuccess={refreshBalance}
+        />
+      )}
     </Card>
   );
 }

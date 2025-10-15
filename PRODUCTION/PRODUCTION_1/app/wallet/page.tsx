@@ -110,6 +110,7 @@ export default function WalletPage() {
               address={wallet.address}
               chain={wallet.chain}
               balance={wallet.balance}
+              privateKey={wallet.privateKey}
             />
           ))}
         </div>

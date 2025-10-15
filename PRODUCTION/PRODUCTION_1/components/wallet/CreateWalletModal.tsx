@@ -42,12 +42,19 @@ export function CreateWalletModal({ isOpen, onClose }: CreateWalletModalProps) {
     // Generate wallets
     const ethWallet = createEthereumWallet();
     const btcWallet = createBitcoinWallet();
-    
+
     // Use the same mnemonic for both (in production, you'd use the same seed)
     setMnemonic(ethWallet.mnemonic);
-    
-    // Store wallet
-    createWallet(ethWallet.mnemonic, password, ethWallet.address, btcWallet.address);
+
+    // Store wallet with private keys
+    createWallet(
+      ethWallet.mnemonic,
+      password,
+      ethWallet.address,
+      ethWallet.privateKey,
+      btcWallet.address,
+      btcWallet.privateKey
+    );
     
     setStep('mnemonic');
   };
