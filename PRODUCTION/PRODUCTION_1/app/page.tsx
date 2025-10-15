@@ -6,12 +6,14 @@ import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { CreateWalletModal } from '@/components/wallet/CreateWalletModal';
 import { UnlockWalletModal } from '@/components/wallet/UnlockWalletModal';
+import { ImportWalletModal } from '@/components/wallet/ImportWalletModal';
 import { useWalletStore } from '@/lib/store/wallet-store';
 import { Shield, Wallet, Lock, Zap } from 'lucide-react';
 
 export default function Home() {
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [showUnlockModal, setShowUnlockModal] = useState(false);
+  const [showImportModal, setShowImportModal] = useState(false);
   const [mounted, setMounted] = useState(false);
   const router = useRouter();
   
@@ -117,7 +119,7 @@ export default function Home() {
               
               <div className="space-y-3">
                 {hasWallet ? (
-                  <Button 
+                  <Button
                     onClick={() => setShowUnlockModal(true)}
                     className="w-full"
                     size="lg"
@@ -125,13 +127,24 @@ export default function Home() {
                     Unlock Wallet
                   </Button>
                 ) : (
-                  <Button 
-                    onClick={() => setShowCreateModal(true)}
-                    className="w-full"
-                    size="lg"
-                  >
-                    Create New Wallet
-                  </Button>
+                  <>
+                    <Button
+                      onClick={() => setShowCreateModal(true)}
+                      className="w-full"
+                      size="lg"
+                    >
+                      Create New Wallet
+                    </Button>
+
+                    <Button
+                      onClick={() => setShowImportModal(true)}
+                      variant="outline"
+                      className="w-full"
+                      size="lg"
+                    >
+                      Import Existing Wallet
+                    </Button>
+                  </>
                 )}
               </div>
             </div>
@@ -140,13 +153,17 @@ export default function Home() {
       </main>
       
       {/* Modals */}
-      <CreateWalletModal 
-        isOpen={showCreateModal} 
-        onClose={() => setShowCreateModal(false)} 
+      <CreateWalletModal
+        isOpen={showCreateModal}
+        onClose={() => setShowCreateModal(false)}
       />
-      <UnlockWalletModal 
-        isOpen={showUnlockModal} 
-        onClose={() => setShowUnlockModal(false)} 
+      <UnlockWalletModal
+        isOpen={showUnlockModal}
+        onClose={() => setShowUnlockModal(false)}
+      />
+      <ImportWalletModal
+        isOpen={showImportModal}
+        onClose={() => setShowImportModal(false)}
       />
     </div>
   );
