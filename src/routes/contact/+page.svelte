@@ -121,10 +121,11 @@
 					/>
 					
 					<div>
-						<label class="block text-sm font-medium text-slate-300 mb-2">
+						<label for="message-textarea" class="block text-sm font-medium text-slate-300 mb-2">
 							Message <span class="text-red-500">*</span>
 						</label>
 						<textarea
+							id="message-textarea"
 							bind:value={message}
 							required
 							rows="6"

@@ -6,7 +6,7 @@
 import type { WalletBalance, ChainType } from '$lib/types/wallet';
 import { getChainConfig } from '$lib/config/chains';
 import { createPublicClient, http, formatEther, type Address } from 'viem';
-import { mainnet, sepolia, polygon, bsc, avalanche } from 'viem/chains';
+import { sepolia, polygon, bsc, avalanche } from 'viem/chains';
 import { Connection, PublicKey, LAMPORTS_PER_SOL } from '@solana/web3.js';
 
 // ============================================================================

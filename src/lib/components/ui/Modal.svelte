@@ -50,12 +50,15 @@
 <svelte:window onkeydown={handleKeydown} />
 
 {#if open}
+	<!-- svelte-ignore a11y_click_events_have_key_events -->
+	<!-- svelte-ignore a11y_no_static_element_interactions -->
 	<div
 		class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-75 backdrop-blur-sm animate-fade-in"
 		onclick={handleBackdropClick}
 		role="dialog"
 		aria-modal="true"
 		aria-labelledby={title ? 'modal-title' : undefined}
+		tabindex="-1"
 	>
 		<div class="bg-slate-900 rounded-xl shadow-2xl border border-slate-700 w-full {sizeClasses[size]} max-h-[90vh] overflow-hidden flex flex-col">
 			<!-- Header -->

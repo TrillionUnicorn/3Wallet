@@ -41,19 +41,23 @@
 	const widthClass = fullWidth ? 'w-full' : '';
 	
 	const inputClasses = `${baseClasses} ${errorClasses} ${widthClass} ${className}`;
+
+	// Generate unique ID for accessibility
+	const inputId = `input-${Math.random().toString(36).substr(2, 9)}`;
 </script>
 
 <div class={fullWidth ? 'w-full' : ''}>
 	{#if label}
-		<label class="block text-sm font-medium text-slate-300 mb-2">
+		<label for={inputId} class="block text-sm font-medium text-slate-300 mb-2">
 			{label}
 			{#if required}
 				<span class="text-red-500">*</span>
 			{/if}
 		</label>
 	{/if}
-	
+
 	<input
+		id={inputId}
 		{type}
 		{placeholder}
 		{disabled}

@@ -19,8 +19,8 @@
 	"dependencies": {
 		"@scure/bip32": "^1.5.0",
 		"@scure/bip39": "^1.4.0",
-		"@solana/web3.js": "^1.95.8",
-		"bitcoinjs-lib": "^7.0.0",
+		"@solana/web3.js": "^1.75.0",
+		"bitcoinjs-lib": "^6.1.6",
 		"gsap": "^3.12.5",
 		"lottie-web": "^5.12.2",
 		"svelte-motion": "^0.12.2",
