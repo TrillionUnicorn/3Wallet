@@ -1,0 +1,86 @@
+name: flutter_3wallet
+description: "3Wallet - Secure Multi-Chain Cryptocurrency Wallet for iOS and Android"
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # State Management
+  provider: ^6.0.0
+  riverpod: ^2.4.0
+  
+  # Networking
+  http: ^1.1.0
+  dio: ^5.3.0
+  
+  # Local Storage
+  shared_preferences: ^2.2.0
+  hive: ^2.2.0
+  hive_flutter: ^1.1.0
+  
+  # Blockchain
+  web3dart: ^2.7.0
+  bitcoin_flutter: ^2.0.0
+  bip39: ^1.0.0
+  bip32: ^2.1.0
+  
+  # Encryption
+  encrypt: ^4.0.0
+  pointycastle: ^3.7.0
+  
+  # UI
+  flutter_svg: ^2.0.0
+  cached_network_image: ^3.3.0
+  shimmer: ^3.0.0
+  
+  # Biometric
+  local_auth: ^2.1.0
+  
+  # QR Code
+  qr_flutter: ^4.1.0
+  mobile_scanner: ^3.5.0
+  
+  # Notifications
+  firebase_core: ^2.24.0
+  firebase_messaging: ^14.6.0
+  
+  # Utils
+  intl: ^0.19.0
+  uuid: ^4.0.0
+  logger: ^2.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  
+  flutter_lints: ^3.0.0
+  integration_test:
+    sdk: flutter
+  
+  # Testing
+  mockito: ^5.4.0
+  build_runner: ^2.4.0
+
+flutter:
+  uses-material-design: true
+  
+  assets:
+    - assets/images/
+    - assets/icons/
+    - assets/screenshots/
+  
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Regular.ttf
+        - asset: assets/fonts/Poppins-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Poppins-SemiBold.ttf
+          weight: 600
+
