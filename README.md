@@ -18,6 +18,45 @@
 
 ---
 
+## 🎯 **Quick Start**
+
+### Prerequisites
+- **Node.js** 18+ (LTS recommended)
+- **npm** 9+ or **pnpm** 8+
+- **Git** for version control
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/TrillionUnicorn/3Wallet.git
+cd 3Wallet
+
+# Install dependencies
+npm install
+
+# Copy environment variables
+cp .env.example .env.local
+
+# Start development server
+npm run dev
+
+# Open in browser
+open http://localhost:5173
+```
+
+### Build for Production
+
+```bash
+# Build the application
+npm run build
+
+# Preview production build
+npm run preview
+```
+
+---
+
 ## 🔥 **The Problem We Solve**
 
 ### 💸 **$3.8 Billion Lost in 2024**

@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  3wallet-prod2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PUBLIC_ETHEREUM_RPC=${PUBLIC_ETHEREUM_RPC}
+      - PUBLIC_BITCOIN_API=${PUBLIC_BITCOIN_API}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
